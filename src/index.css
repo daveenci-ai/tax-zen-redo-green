@@ -1,0 +1,171 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Professional CPA Design System - All colors, gradients, fonts, etc defined here. 
+All colors MUST be HSL.
+*/
+
+@layer base {
+  :root {
+    /* Core palette mapped to theme tokens (all HSL) */
+    /* Backgrounds and text */
+    --background: 228 55% 98%;           /* surface: #F8F9FD */
+    --foreground: 180 14% 12%;           /* text:   #1B2424 */
+
+    /* Header (topbar/nav) */
+    --header: 184 24% 12%;               /* header: #182627 */
+    --header-foreground: 0 0% 98%;
+
+    /* Primary (CTA buttons) */
+    --primary: 160 41% 53%;              /* cta:    #58B998 */
+    --primary-foreground: 0 0% 98%;
+    --primary-light: 160 41% 63%;
+    --primary-dark: 160 41% 43%;
+
+    /* Accent (brand green for emphasis/headlines) */
+    --accent: 144 84% 30%;               /* brand:  #227744 */
+    --accent-foreground: 0 0% 98%;
+    --accent-light: 144 60% 40%;
+    --accent-muted: 144 30% 90%;
+
+    /* Eyebrow/small labels */
+    --gold: 36 92% 50%;                  /* accent: #F59E0B */
+    --gold-foreground: 180 14% 12%;
+    --gold-light: 36 92% 60%;
+    --gold-muted: 36 40% 92%;
+
+    /* Neutral utility */
+    --secondary: 163 41% 93%;            /* hero bg: #E7F5F1 */
+    --secondary-foreground: 180 14% 12%;
+    --muted: 163 41% 96%;
+    --muted-foreground: 167 12% 45%;     /* muted text: #647E79 */
+
+    /* Surfaces and UI elements */
+    --card: 0 0% 100%;
+    --card-foreground: 180 14% 12%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 180 14% 12%;
+    --border: 180 6% 91%;                /* border: #E6E8E8 */
+    --input: 180 6% 91%;
+    --ring: 160 41% 53%;                 /* use CTA color for focus ring */
+
+    /* Status colors */
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 98%;
+    --success: 142 76% 36%;
+    --success-foreground: 0 0% 98%;
+
+    /* Design tokens */
+    --radius: 0.75rem;
+    
+    /* Gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(var(--accent)) 0%, hsl(var(--primary)) 100%);
+    --gradient-accent: linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(var(--primary-light)) 100%);
+    --gradient-hero: linear-gradient(135deg, hsl(var(--accent)) 0%, hsl(var(--primary)) 100%);
+    --gradient-subtle: linear-gradient(180deg, hsl(var(--secondary)) 0%, hsl(var(--background)) 100%);
+
+    /* Shadows */
+    --shadow-sm: 0 1px 2px hsl(180 14% 12% / 0.05);
+    --shadow-md: 0 4px 6px hsl(180 14% 12% / 0.07), 0 2px 4px hsl(180 14% 12% / 0.06);
+    --shadow-lg: 0 10px 15px hsl(180 14% 12% / 0.1), 0 4px 6px hsl(180 14% 12% / 0.05);
+    --shadow-professional: 0 20px 40px hsl(180 14% 12% / 0.1);
+
+    /* Transitions */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .dark {
+    --background: 184 24% 10%;
+    --foreground: 0 0% 98%;
+
+    --header: 184 24% 8%;
+    --header-foreground: 0 0% 98%;
+
+    --primary: 160 41% 60%;
+    --primary-foreground: 184 24% 8%;
+    --primary-light: 160 41% 70%;
+    --primary-dark: 160 41% 50%;
+
+    --accent: 144 84% 35%;
+    --accent-foreground: 0 0% 98%;
+    --accent-light: 144 84% 45%;
+    --accent-muted: 144 20% 20%;
+
+    --gold: 36 92% 55%;
+    --gold-foreground: 184 24% 8%;
+    --gold-light: 36 92% 65%;
+    --gold-muted: 36 20% 18%;
+
+    --secondary: 184 24% 15%;
+    --secondary-foreground: 0 0% 98%;
+    --muted: 184 24% 12%;
+    --muted-foreground: 167 12% 65%;
+
+    --card: 184 24% 12%;
+    --card-foreground: 0 0% 98%;
+    --popover: 184 24% 12%;
+    --popover-foreground: 0 0% 98%;
+    --border: 184 10% 22%;
+    --input: 184 10% 22%;
+    --ring: 160 41% 60%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 98%;
+    --success: 142 76% 45%;
+    --success-foreground: 0 0% 98%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply text-balance;
+  }
+}
+
+@layer components {
+  /* Hero gradient text */
+  .gradient-text {
+    @apply bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent;
+  }
+
+  /* Professional hover effects */
+  .hover-lift {
+    @apply transition-all duration-300 hover:translate-y-[-2px] hover:shadow-lg;
+  }
+
+  /* Smooth fade in animation */
+  .fade-in {
+    @apply opacity-0 translate-y-4 transition-all duration-700;
+  }
+
+  .fade-in.visible {
+    @apply opacity-100 translate-y-0;
+  }
+
+  /* Professional button variants */
+  .btn-professional {
+    @apply bg-primary text-primary-foreground px-8 py-4 rounded-lg font-semibold transition-all duration-300 hover:bg-primary-light hover:shadow-professional;
+  }
+
+  .btn-accent {
+    @apply bg-accent text-accent-foreground px-8 py-4 rounded-lg font-semibold transition-all duration-300 hover:bg-accent-light hover:shadow-lg;
+  }
+
+  .btn-outline {
+    @apply border-2 border-primary text-primary px-8 py-4 rounded-lg font-semibold transition-all duration-300 hover:bg-primary hover:text-primary-foreground;
+  }
+
+  /* Professional card */
+  .card-professional {
+    @apply bg-card border border-border rounded-xl p-6 shadow-md hover:shadow-lg transition-all duration-300;
+  }
+}
